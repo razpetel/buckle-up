@@ -28,7 +28,7 @@ digraph buckle_up_flow {
   check_index [label="Index stale?"];
   rebuild [label="Rebuild index\n(show progress)"];
   check_prev [label="Previous run?"];
-  rerun_menu [label="Resume|Upgrade|\nRe-interview|Reset"];
+  rerun_menu [label="Resume|Upgrade|\nRe-interview|Reset|Status"];
   detect_config [label="Detect existing config"];
   interview [label="Interview\n(5-10 questions)"];
   depth [label="Depth questions\n(if ambiguous)"];
