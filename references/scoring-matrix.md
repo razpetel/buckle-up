@@ -68,7 +68,11 @@ When indexing a tool, extract:
   "bestFor": "one-line description of ideal use case",
   "warnings": ["warning1", "warning2"],
   "stars": 12345,
+  "requiresMcp": ["mcp-name"],
   "complementsTools": ["tool-a", "tool-b"],
   "overlapsTools": ["tool-c", "tool-d"]
 }
+```
+
+**Category assignment:** Assign PRIMARY category only. For hybrid tools, choose category matching primary use case.
 ```
