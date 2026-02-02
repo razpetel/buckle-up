@@ -1,0 +1,10 @@
+{
+  "name": "buckle-up-dev",
+  "owner": {
+    "name": "razpetel"
+  },
+  "plugins": [{
+    "name": "buckle-up",
+    "source": "./"
+  }]
+}
