@@ -1,6 +1,6 @@
 {
   "name": "buckle-up",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Project setup wizard using your research catalogue to configure optimal Claude Code tooling",
   "author": {
     "name": "razpetel"
