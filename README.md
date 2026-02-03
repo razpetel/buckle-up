@@ -14,7 +14,37 @@ C) Run `/buckle-up` and let it figure it out
 
 ## How It Works
 
-1. **Index** — Reads your research catalogue, extracts structured data
+```mermaid
+flowchart TD
+    A["/buckle-up"] --> B{Catalogue found?}
+    B -->|yes| C{Index stale?}
+    B -->|no| B1[Prompt for path]
+    B1 --> C
+    C -->|"hash changed"| D["Rebuild index<br/>(shows progress)"]
+    C -->|"hash matches"| E{Previous run?}
+    D --> E
+    E -->|yes| F{Re-run mode?}
+    E -->|no| G[Detect existing config]
+    F -->|Resume| K
+    F -->|Upgrade| G
+    F -->|Re-interview| G
+    F -->|Reset| Z[Remove config]
+    G --> H["Interview<br/>(5-10 questions)"]
+    H --> I[Score all tools]
+    I --> J["Top 10 candidates<br/>(category coverage)"]
+    J --> J1{Deep research?}
+    J1 -->|yes| J2[Check web for updates]
+    J1 -->|no| J3[LLM reasoning]
+    J2 --> J3
+    J3 --> K["Present plan<br/>[Apply|Edit|Explain]"]
+    K --> L["Apply piece by piece<br/>MCPs → Plugins → CLAUDE.md → Hooks"]
+    L --> M[Done]
+    Z --> M
+```
+
+**The key steps:**
+
+1. **Index** — Reads your research catalogue, extracts structured data (cached, rebuilds when catalogue changes)
 2. **Interview** — Asks 5-10 smart questions about your project
 3. **Score** — Ranks every tool against your specific needs
 4. **Reason** — Selects the minimal non-overlapping set
