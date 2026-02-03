@@ -9,7 +9,7 @@
 You've researched 30+ AI coding tools. Now you're starting a new project and need to pick the right combination. Do you:
 
 A) Spend an hour re-reading all your notes
-B) Just install everything and hope for the best
+B) Install everything and mass-produce ~/.claude.json backups
 C) Run `/buckle-up` and let it figure it out
 
 ## How It Works
@@ -56,7 +56,7 @@ A research catalogue with:
 - `catalogue.md` — Index of researched tools
 - `catalogue/*.md` — Individual research reports
 
-Don't have one? Install [fomo-researcher](https://github.com/razpetel/fomo-researcher) and run `/research` on some tools.
+Don't have one? Install [fomo-researcher](https://github.com/razpetel/fomo-researcher) and run `/research` on some tools. Your future self will thank you.
 
 ## Installation
 
@@ -65,7 +65,7 @@ Don't have one? Install [fomo-researcher](https://github.com/razpetel/fomo-resea
 /plugin install buckle-up@razpetel
 ```
 
-Restart Claude Code.
+Restart Claude Code. (Yes, really.)
 
 ## Usage
 
@@ -88,7 +88,7 @@ Restart Claude Code.
 
 ## Re-runs
 
-Already configured? Run `/buckle-up` again to:
+Changed your mind? Discovered a shiny new tool? Run `/buckle-up` again to:
 
 - **Resume** — Finish interrupted setup
 - **Upgrade** — Check for new tools in catalogue
