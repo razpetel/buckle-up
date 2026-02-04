@@ -25,30 +25,28 @@ flowchart TD
     D --> E
     E -->|yes| F{Re-run mode?}
     E -->|no| G[Detect existing config]
-    F -->|Resume| K
+    F -->|Resume| L1
     F -->|Upgrade| G
     F -->|Re-interview| G
     F -->|Reset| Z[Remove config]
     G --> H["Interview<br/>(5-10 questions)"]
     H --> I[Score all tools]
     I --> J["Top 10 candidates<br/>(category coverage)"]
-    J --> J1{Deep research?}
-    J1 -->|yes| J2[Check web for updates]
-    J1 -->|no| J3[LLM reasoning]
-    J2 --> J3
-    J3 --> K["Present plan<br/>[Apply|Edit|Explain]"]
-    K --> L["Apply piece by piece<br/>MCPs → Plugins → CLAUDE.md → Hooks"]
-    L --> M[Done]
+    J --> K["Present plan<br/>[Apply|Edit|Explain]"]
+    K -->|approve| R["🔍 research-agent<br/>(fetch latest details)"]
+    R --> L1["Apply MCPs + Plugins"]
+    L1 --> L2["📝 config-writer-agent<br/>(generate CLAUDE.md + hooks)"]
+    L2 --> M[Done]
     Z --> M
 ```
 
 **The key steps:**
 
-1. **Index** — Reads your research catalogue, extracts structured data (cached, rebuilds when catalogue changes)
+1. **Index** — Reads your research catalogue, extracts structured data (cached)
 2. **Interview** — Asks 5-10 smart questions about your project
 3. **Score** — Ranks every tool against your specific needs
-4. **Reason** — Selects the minimal non-overlapping set
-5. **Configure** — Sets up MCPs, plugins, hooks, CLAUDE.md
+4. **Research** — Agent fetches latest details for approved tools
+5. **Configure** — Agent generates CLAUDE.md + hooks using best practices
 
 ## Prerequisites
 
@@ -114,6 +112,20 @@ Each tool is scored across 5 dimensions:
 | Autonomy | Human-in-loop vs overnight autonomous |
 
 Weights adjust based on your answers. Bonuses for complementary tools, penalties for conflicts.
+
+## Agents
+
+Buckle-up delegates specialized tasks to agents:
+
+| Agent | When | What It Does |
+|-------|------|--------------|
+| **research-agent** | After you approve | Fetches latest versions, install commands, breaking changes |
+| **config-writer-agent** | During apply | Generates CLAUDE.md and hooks using best practices |
+
+The config-writer respects your preferences:
+- Token-conscious? Minimal CLAUDE.md (<500 words)
+- High autonomy? Proactive hooks, less confirmation
+- Production project? Test gates and quality checks
 
 ## License
 
