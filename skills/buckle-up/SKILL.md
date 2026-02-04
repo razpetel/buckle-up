@@ -126,9 +126,7 @@ See: `agents/research-agent.md`
 **Input:** Installed manifest, interview answers, methodology references
 **Output:** CLAUDE.md section + hooks configuration
 
-The agent loads best practices from:
-- `references/claude-md-guidelines.md`
-- Research reports (context-engineering, claude-4-best-practices, everything-claude-code)
+The agent loads best practices from `references/guidance.md` — a comprehensive 1500+ line reference synthesized from context-engineering, claude-4-best-practices, and everything-claude-code research. No external dependencies required.
 
 Output respects user's token-consciousness and autonomy preferences.
 
@@ -204,7 +202,8 @@ Detect previous run via state file. Offer:
 - `references/scoring-matrix.md` — Dimension definitions, weights, formulas
 - `references/interview-questions.md` — Question bank with skip logic
 - `references/tool-categories.md` — Category definitions and tool mappings
-- `references/claude-md-guidelines.md` — Best practices for CLAUDE.md generation
+- `references/guidance.md` — Comprehensive config-writer reference (token budgets, templates, hooks)
+- `references/claude-md-guidelines.md` — Quick reference for CLAUDE.md patterns
 - `scripts/index-catalogue.md` — LLM prompt for indexing
 - `scripts/selection-reasoning.md` — LLM prompt for final selection
 - `templates/` — CLAUDE.md section, hook scripts

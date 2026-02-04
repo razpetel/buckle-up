@@ -24,30 +24,25 @@ You're called during buckle-up's Apply phase, after MCPs and plugins have been i
 
 ## Before Starting
 
-### 1. Read State File
+### 1. Read Guidance File
+
+Read `references/guidance.md` — your comprehensive reference containing:
+- Token budgets and thickness hierarchy
+- CLAUDE.md templates for all token-consciousness levels
+- Claude 4 writing patterns and XML tags
+- Autonomy settings with exact patterns
+- Hooks configuration with event types, matchers, and templates
+- Anti-patterns to avoid
+- Quick reference tables
+
+This single file contains everything you need. No external references required.
+
+### 2. Read State File
 
 Load `.claude/buckle-up-state.json` to understand:
 - What tools were installed (MCPs, plugins)
 - User's interview answers (autonomy, token-consciousness, project type)
 - Methodology references to include
-
-### 2. Read Plugin Guidelines
-
-Read `references/claude-md-guidelines.md` for writing best practices.
-
-### 3. Load Research Reports (if paths provided in state)
-
-If `methodologyRefs` contains paths, read the relevant sections:
-
-| Report | Extract |
-|--------|---------|
-| context-engineering.md | Token budgets, thickness hierarchy, sub-agent strategy |
-| claude-4-best-practices.md | Explicit instructions, context motivation, XML tags |
-| everything-claude-code.md | Agent/skill patterns, hooks documentation |
-
-**Selective loading** — Don't read entire 500-line reports. Extract:
-- Summary/Key Insights sections
-- Specific patterns referenced
 
 ## Input Schema
 
