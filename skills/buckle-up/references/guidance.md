@@ -458,7 +458,7 @@ Always pause and ask before:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Write|Edit",
+        "matcher": {"tools": ["Write", "Edit"]},
         "hooks": [
           {
             "type": "command",
@@ -469,7 +469,6 @@ Always pause and ask before:
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "prompt",
@@ -516,7 +515,7 @@ before proposing changes.
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -527,7 +526,7 @@ before proposing changes.
     ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -587,7 +586,7 @@ For tasks spanning multiple context windows:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -598,7 +597,6 @@ For tasks spanning multiple context windows:
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "agent",
@@ -775,7 +773,7 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -795,7 +793,7 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -815,7 +813,7 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -826,7 +824,7 @@ Additional tools available. Run `/tools` to see full list.
     ],
     "PostToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -846,7 +844,6 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -886,7 +883,6 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "agent",
@@ -907,7 +903,7 @@ Additional tools available. Run `/tools` to see full list.
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -918,7 +914,7 @@ Additional tools available. Run `/tools` to see full list.
     ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -929,7 +925,6 @@ Additional tools available. Run `/tools` to see full list.
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "prompt",
@@ -940,7 +935,6 @@ Additional tools available. Run `/tools` to see full list.
     ],
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -1066,7 +1060,7 @@ See: `/docs/api-schema.json`
 {
   "PreToolUse": [
     {
-      "matcher": "Edit",
+      "matcher": {"tools": ["Edit"]},
       "hooks": [{"type": "command", "command": "npm test"}]
     }
   ]
@@ -1076,7 +1070,7 @@ See: `/docs/api-schema.json`
 {
   "PreToolUse": [
     {
-      "matcher": "Bash",
+      "matcher": {"tools": ["Bash"]},
       "hooks": [{"type": "command", "command": "check_if_git_commit.sh"}]
     }
   ]
@@ -1291,7 +1285,7 @@ before proposing changes.
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -1302,7 +1296,7 @@ before proposing changes.
     ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -1364,7 +1358,7 @@ Before any file changes:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -1375,7 +1369,6 @@ Before any file changes:
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "prompt",
@@ -1519,7 +1512,7 @@ For tasks spanning multiple context windows:
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": {"tools": ["Bash"]},
         "hooks": [
           {
             "type": "command",
@@ -1530,7 +1523,7 @@ For tasks spanning multiple context windows:
     ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write",
+        "matcher": {"tools": ["Edit", "Write"]},
         "hooks": [
           {
             "type": "command",
@@ -1541,7 +1534,6 @@ For tasks spanning multiple context windows:
     ],
     "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "agent",
@@ -1564,7 +1556,6 @@ For tasks spanning multiple context windows:
     ],
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
