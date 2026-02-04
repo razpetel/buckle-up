@@ -3,6 +3,8 @@ name: buckle-up
 description: Use when starting a new project or optimizing an existing one, when you have a research catalogue and need to configure Claude Code setup (plugins, MCPs, hooks, CLAUDE.md)
 ---
 
+**On skill invocation, display the banner from `assets/banner.txt`**
+
 # Buckle-Up
 
 Configure optimal Claude Code tooling from your research catalogue.
@@ -77,12 +79,17 @@ digraph buckle_up_flow {
 
 ## Catalogue Discovery
 
-Check in order:
-1. `./research/catalogue.md` (project-local)
-2. `~/research-catalogue/catalogue.md` (global default)
-3. Prompt user for path
+When no path provided with `/buckle-up`, ask user:
 
-If no catalogue found, offer: [Create with fomo-researcher] | [Point to existing] | [Cancel]
+**[Use existing catalogue]** — "Enter path to your catalogue.md"
+**[Clone readymade catalogue]** — Clone https://github.com/razpetel/research-catalogue to `~/research-catalogue/` and use it
+**[Cancel]** — Exit
+
+For the clone option, run:
+```bash
+git clone https://github.com/razpetel/research-catalogue.git ~/research-catalogue
+```
+Then continue with `~/research-catalogue/catalogue.md`.
 
 ## Insights Integration
 

@@ -16,10 +16,13 @@ C) Run `/buckle-up` and let it figure it out
 
 ```mermaid
 flowchart TD
-    A["/buckle-up"] --> B{Catalogue found?}
+    A["/buckle-up"] --> B{Path provided?}
     B -->|yes| C{Index stale?}
-    B -->|no| B1[Prompt for path]
-    B1 --> C
+    B -->|no| B1{Choose catalogue}
+    B1 -->|"Use existing"| B2[Enter path]
+    B1 -->|"Clone readymade"| B3["git clone razpetel/research-catalogue"]
+    B2 --> C
+    B3 --> C
     C -->|"hash changed"| D["Rebuild index<br/>(shows progress)"]
     C -->|"hash matches"| E{Previous run?}
     D --> E
@@ -58,7 +61,9 @@ A research catalogue with:
 - `catalogue.md` — Index of researched tools
 - `catalogue/*.md` — Individual research reports
 
-Don't have one? Install [fomo-researcher](https://github.com/razpetel/fomo-researcher) and run `/research` on some tools. Your future self will thank you.
+Don't have one? Two options:
+- **Quick start:** Clone the [readymade catalogue](https://github.com/razpetel/research-catalogue) (buckle-up offers this automatically)
+- **Build your own:** Install [fomo-researcher](https://github.com/razpetel/fomo-researcher) and run `/research` on tools you care about
 
 ## Installation
 
@@ -72,7 +77,7 @@ Restart Claude Code. (Yes, really.)
 ## Usage
 
 ```bash
-# Auto-discover catalogue (checks ./research/ then ~/research-catalogue/)
+# Choose catalogue interactively (use existing or clone readymade)
 /buckle-up
 
 # Explicit catalogue path
