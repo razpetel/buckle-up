@@ -90,12 +90,14 @@ Restart Claude Code. (Yes, really.)
 
 ## What Gets Configured
 
-| Component | How |
-|-----------|-----|
-| **MCPs** | Added to `~/.claude.json` |
-| **Plugins** | Installation commands provided |
-| **CLAUDE.md** | Methodology references added |
-| **Hooks** | Test gates, TDD reminders |
+| Component | How | Scope |
+|-----------|-----|-------|
+| **MCPs** | Added to `~/.claude.json` | Global |
+| **Plugins** | Installation commands provided | Global |
+| **CLAUDE.md** | Methodology references added | Project |
+| **Hooks** | Test gates, TDD reminders | Project |
+
+**Note:** MCPs and plugins are global — they persist across projects. Running buckle-up on multiple projects accumulates them. This is intentional (most tools are useful everywhere).
 
 ## Re-runs
 
@@ -104,7 +106,7 @@ Changed your mind? Discovered a shiny new tool? Run `/buckle-up` again to:
 - **Resume** — Finish interrupted setup
 - **Upgrade** — Check for new tools in catalogue
 - **Re-interview** — Start fresh with different needs
-- **Reset** — Remove all buckle-up configuration
+- **Reset** — Remove project config (global MCPs/plugins remain)
 
 ## State
 

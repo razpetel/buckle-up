@@ -187,8 +187,10 @@ Order: MCPs → Plugins → **Config Writer** → Verify
 After user approves the plan, invoke `research-agent` to fetch latest technical details for approved tools. Results written to state file.
 
 ### Phase 2: Install MCPs + Plugins
-1. **MCPs** — Merge into `~/.claude.json`
-2. **Plugins** — Provide installation commands for user to run
+1. **MCPs** — Merge into `~/.claude.json` (global, shared across all projects)
+2. **Plugins** — Provide installation commands for user to run (global)
+
+**Note:** MCPs and plugins are global resources in Claude Code. Running buckle-up on multiple projects accumulates them in `~/.claude.json`. This is by design — most MCPs (context7, brave-search) are useful across projects.
 
 ### Phase 3: Generate Config (via config-writer-agent)
 Invoke `config-writer-agent` with:
@@ -224,7 +226,7 @@ Detect previous run via state file. Offer:
 - **Resume** — Apply pending items
 - **Upgrade** — Re-score with saved answers, show diff
 - **Re-interview** — Start fresh
-- **Reset** — Remove buckle-up config
+- **Reset project config** — Remove project-level buckle-up config (CLAUDE.md section, hooks, state file). Does NOT remove global MCPs/plugins from `~/.claude.json` — clean those manually if needed.
 - **Status** — Show current configuration
 
 ## References
