@@ -30,7 +30,8 @@ digraph buckle_up_flow {
   check_prev [label="Previous run?"];
   rerun_menu [label="Resume|Upgrade|\nRe-interview|Reset|Status"];
   detect_config [label="Detect existing config"];
-  interview [label="Interview\n(5-10 questions)"];
+  gather_insights [label="Gather insights\n(auto-run if missing)"];
+  interview [label="Interview\n(personalized)"];
   depth [label="Depth questions\n(if ambiguous)"];
   score [label="Score all tools"];
   top10 [label="Top 10 + category\ncoverage"];
@@ -56,7 +57,8 @@ digraph buckle_up_flow {
   check_prev -> detect_config [label="no"];
   rerun_menu -> detect_config [label="re-interview"];
   rerun_menu -> apply_tools [label="resume"];
-  detect_config -> interview;
+  detect_config -> gather_insights;
+  gather_insights -> interview;
   interview -> depth;
   depth -> score;
   score -> top10;
@@ -81,6 +83,27 @@ Check in order:
 3. Prompt user for path
 
 If no catalogue found, offer: [Create with fomo-researcher] | [Point to existing] | [Cancel]
+
+## Insights Integration
+
+Before interviewing, buckle-up gathers usage insights from Claude Code:
+
+1. Check `~/.claude/usage-data/report.html`
+2. If missing or stale (>14 days): auto-run `/insights`
+   ```bash
+   echo "/insights" | claude -p 2>/dev/null
+   ```
+3. Parse report: project areas, tool usage, autonomy signals, friction points
+4. Generate inferences with confidence levels (high/medium/low)
+5. Personalize questions — show inferences, let user confirm or override
+
+**Auto-refresh:** Missing or stale reports trigger automatic regeneration.
+
+**Failure fallback:** If `/insights` fails or times out, continue with standard questions.
+
+**Never skip questions:** Insights inform but don't decide. Always ask, but contextualize with inferences when confident.
+
+See: `references/insights-integration.md`
 
 ## Interview
 
@@ -199,8 +222,9 @@ Detect previous run via state file. Offer:
 
 ## References
 
+- `references/insights-integration.md` — Extraction schema, inference mapping, personalized patterns
 - `references/scoring-matrix.md` — Dimension definitions, weights, formulas
-- `references/interview-questions.md` — Question bank with skip logic
+- `references/interview-questions.md` — Question bank with skip logic and personalized variants
 - `references/tool-categories.md` — Category definitions and tool mappings
 - `references/guidance.md` — Comprehensive config-writer reference (token budgets, templates, hooks)
 - `references/claude-md-guidelines.md` — Quick reference for CLAUDE.md patterns
