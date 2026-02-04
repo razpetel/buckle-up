@@ -36,7 +36,10 @@ flowchart TD
     K -->|approve| R["🔍 research-agent<br/>(fetch latest details)"]
     R --> L1["Apply MCPs + Plugins"]
     L1 --> L2["📝 config-writer-agent<br/>(generate CLAUDE.md + hooks)"]
-    L2 --> M[Done]
+    L2 --> V["✓ verification-agent<br/>(validate config)"]
+    V -->|pass| M[Done]
+    V -->|issues| FIX[Fix issues]
+    FIX --> V
     Z --> M
 ```
 
@@ -47,6 +50,7 @@ flowchart TD
 3. **Score** — Ranks every tool against your specific needs
 4. **Research** — Agent fetches latest details for approved tools
 5. **Configure** — Agent generates CLAUDE.md + hooks using best practices
+6. **Verify** — Agent validates everything works before declaring done
 
 ## Prerequisites
 
@@ -121,8 +125,9 @@ Buckle-up delegates specialized tasks to agents:
 |-------|------|--------------|
 | **research-agent** | After you approve | Fetches latest versions, install commands, breaking changes |
 | **config-writer-agent** | During apply | Generates CLAUDE.md and hooks using best practices |
+| **verification-agent** | After config | Validates everything works before declaring done |
 
-The config-writer respects your preferences:
+The agents respect your preferences:
 - Token-conscious? Minimal CLAUDE.md (<500 words)
 - High autonomy? Proactive hooks, less confirmation
 - Production project? Test gates and quality checks

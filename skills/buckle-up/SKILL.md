@@ -41,8 +41,10 @@ digraph buckle_up_flow {
   // Agents (dashed boxes)
   research_agent [label="research-agent\n(fetch latest details)" style=dashed];
   config_agent [label="config-writer-agent\n(generate config)" style=dashed];
+  verify_agent [label="verification-agent\n(validate config)" style=dashed];
 
   apply_tools [label="Apply MCPs + Plugins"];
+  fix_issues [label="Fix issues"];
   done [label="Done" shape=ellipse];
 
   start -> find_cat;
@@ -64,7 +66,10 @@ digraph buckle_up_flow {
   present -> research_agent [label="approve"];
   research_agent -> apply_tools;
   apply_tools -> config_agent;
-  config_agent -> done;
+  config_agent -> verify_agent;
+  verify_agent -> done [label="pass"];
+  verify_agent -> fix_issues [label="issues"];
+  fix_issues -> verify_agent [label="retry"];
 }
 ```
 
@@ -129,6 +134,23 @@ Output respects user's token-consciousness and autonomy preferences.
 
 See: `agents/config-writer-agent.md`
 
+### verification-agent
+
+**When:** After config-writer-agent completes, before declaring Done
+**Purpose:** Validate configuration is operational, coherent, and matches spec
+**Input:** State file, installed config files
+**Output:** Verification report with pass/fail status
+
+The agent checks four dimensions:
+- Operational: MCPs configured, hooks valid, env vars set
+- Coherent: No duplicates, no conflicts, refs match installed
+- Well-defined: Valid JSON, complete state, expected sections
+- Matches spec: Tools match approved, token budget met, autonomy applied
+
+On issues: offer [Fix issues] | [Continue anyway] | [Rollback]
+
+See: `agents/verification-agent.md`, `references/verification-rules.md`
+
 ## Apply
 
 Order: MCPs → Plugins → **Config Writer** → Verify
@@ -150,11 +172,14 @@ Agent generates:
 - CLAUDE.md section (respects token-consciousness level)
 - Hooks configuration (respects autonomy preference)
 
-### Phase 4: Verify
-Run checklist from agent output to confirm:
-- All tools documented
-- Hooks don't conflict
-- Word count appropriate
+### Phase 4: Verify (via verification-agent)
+Invoke `verification-agent` to validate four dimensions:
+- Operational: MCPs configured, hooks valid, env vars set
+- Coherent: No duplicates, no conflicts, refs match installed
+- Well-defined: Valid JSON, complete state
+- Matches spec: Token budget, autonomy alignment
+
+On issues: offer [Fix] | [Continue anyway] | [Rollback]
 
 ### Safety
 
@@ -185,3 +210,5 @@ Detect previous run via state file. Offer:
 - `templates/` — CLAUDE.md section, hook scripts
 - `agents/research-agent.md` — Fetches latest technical details
 - `agents/config-writer-agent.md` — Generates CLAUDE.md and hooks
+- `agents/verification-agent.md` — Validates configuration
+- `references/verification-rules.md` — Validation rules and severity levels
