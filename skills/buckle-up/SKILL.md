@@ -3,7 +3,7 @@ name: buckle-up
 description: Use when starting a new project or optimizing an existing one, when you have a research catalogue and need to configure Claude Code setup (plugins, MCPs, hooks, CLAUDE.md)
 ---
 
-**On skill invocation, display the banner from `assets/banner.txt`**
+**On skill invocation, read and display the COMPLETE contents of `assets/banner.txt` (all 70 lines including the ASCII art dwarf)**
 
 # Buckle-Up
 
