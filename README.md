@@ -65,6 +65,10 @@ Don't have one? Two options:
 - **Quick start:** Clone the [readymade catalogue](https://github.com/razpetel/research-catalogue) (buckle-up offers this automatically)
 - **Build your own:** Install [fomo-researcher](https://github.com/razpetel/fomo-researcher) and run `/research` on tools you care about
 
+## Insights Integration
+
+Buckle-up automatically gathers usage patterns from `/insights` to personalize interview questions. If no recent insights exist, it offers to generate them.
+
 ## Installation
 
 ```bash

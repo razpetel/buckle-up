@@ -15,7 +15,7 @@ Buckle-up interviews you about your project, scores tools from your research cat
 
 ## Invocation
 
-- `/buckle-up` — Auto-discover catalogue
+- `/buckle-up` — Choose catalogue interactively
 - `/buckle-up /path/to/catalogue` — Explicit path
 
 ## Flow
@@ -132,7 +132,7 @@ See: `references/tool-categories.md`, `scripts/selection-reasoning.md`
 
 ## Agents
 
-This skill delegates specialized tasks to agents:
+This skill delegates specialized tasks to agents defined at the plugin level (in the `agents/` directory at the plugin root):
 
 ### research-agent
 
