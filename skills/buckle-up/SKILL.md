@@ -234,7 +234,6 @@ Detect previous run via state file. Offer:
 - `references/interview-questions.md` — Question bank with skip logic and personalized variants
 - `references/tool-categories.md` — Category definitions and tool mappings
 - `references/guidance.md` — Comprehensive config-writer reference (token budgets, templates, hooks)
-- `references/claude-md-guidelines.md` — Quick reference for CLAUDE.md patterns
 - `scripts/index-catalogue.md` — LLM prompt for indexing
 - `scripts/selection-reasoning.md` — LLM prompt for final selection
 - `templates/` — CLAUDE.md section, hook scripts
