@@ -229,6 +229,51 @@ Detect previous run via state file. Offer:
 - **Reset project config** — Remove project-level buckle-up config (CLAUDE.md section, hooks, state file). Does NOT remove global MCPs/plugins from `~/.claude.json` — clean those manually if needed.
 - **Status** — Show current configuration
 
+### Status Option
+
+When user selects **Status** from rerun menu:
+
+1. Read `.claude/buckle-up-state.json`
+2. Display configuration summary:
+
+```
+Buckle-Up Status (configured {state.configuredAt})
+
+Global (shared across projects):
+├── MCPs: {count}
+│   └── {name} (v{version}) — {purpose}
+└── Plugins: {count}
+    └── {name} (v{version}) — {purpose}
+
+Project (this project only):
+├── CLAUDE.md: {word_count} words (budget: {target based on tokenConscious})
+├── Hooks: {count} active
+│   └── {type}: {name}
+├── Methodologies: {count} referenced
+│   └── {name} — {path}
+└── Autonomy: level {n} ({1=supervise, 2=balanced, 3=autonomous})
+
+State: .claude/buckle-up-state.json
+Backup: .claude/buckle-up-backup/
+
+[Resume] | [Upgrade] | [Re-interview] | [Reset] | [Exit]
+```
+
+3. If no state file exists:
+```
+No buckle-up configuration found for this project.
+Run /buckle-up to configure.
+```
+
+**Data sources:**
+- `state.installed.mcps` → MCP list with versions
+- `state.installed.plugins` → Plugin list with versions
+- `state.methodologyRefs` → Methodology references
+- `state.interview.tokenConscious` → Token budget target
+- `state.interview.autonomy` → Autonomy level
+- `.claude/settings.json` → Hooks count by type
+- `./CLAUDE.md` → Word count in buckle-up section
+
 ## References
 
 - `references/insights-integration.md` — Extraction schema, inference mapping, personalized patterns

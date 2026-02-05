@@ -160,10 +160,48 @@ Present a verification report:
 Based on results:
 
 **All pass (0 errors, 0 warnings):**
+
+Display **Capability Card** showing user what they now have:
+
 ```
-✓ Verification complete. Configuration ready.
+╭──────────────────────────────────────────────────────────────────╮
+│  ✓ Buckle-Up Complete                                            │
+├──────────────────────────────────────────────────────────────────┤
+│  Your Claude Code now has:                                       │
+│                                                                  │
+│  ⚙️  MCPs (global)                                                │
+│     • {mcp_name} — {purpose from researchResults}                │
+│     • ...                                                        │
+│                                                                  │
+│  🔌 Plugins (global)                                              │
+│     • {plugin_name} — {purpose from researchResults}             │
+│     • ...                                                        │
+│                                                                  │
+│  📋 Methodologies (project)                                       │
+│     • {methodology_name} — {brief description}                   │
+│     • ...                                                        │
+│                                                                  │
+│  ⚡ Hooks (project)                                               │
+│     • {hook_type}: {hook_name}                                   │
+│     • ...                                                        │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  Try now:                                                        │
+│     {skill_or_command} — {what it does}                          │
+│     ...                                                          │
+╰──────────────────────────────────────────────────────────────────╯
+
 [Done]
 ```
+
+**Populating the card:**
+1. Read `state.installed.mcps` → list MCPs with purposes from `researchResults`
+2. Read `state.installed.plugins` → list plugins with purposes
+3. Read `state.methodologyRefs` → list methodology references
+4. Count hooks from `.claude/settings.json`
+5. "Try now" section: Extract 2-3 relevant skills/commands from installed plugins
+
+If MCPs/plugins/methodologies/hooks sections are empty, omit that section from the card.
 
 **Warnings only:**
 ```
