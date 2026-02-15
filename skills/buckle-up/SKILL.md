@@ -3,7 +3,7 @@ name: buckle-up
 description: Use when starting a new project or optimizing an existing one, when you have a research catalogue and need to configure Claude Code setup (plugins, MCPs, hooks, CLAUDE.md)
 ---
 
-**On skill invocation, read and display the COMPLETE contents of `assets/banner.txt` (all 70 lines including the ASCII art dwarf)**
+**CRITICAL — On skill invocation, display the banner using the Bash tool (NOT the Read tool). Run: `bash <skill_dir>/tools/display-banner.sh` where `<skill_dir>` is the directory containing this SKILL.md file. Do NOT read banner.txt with the Read tool. Do NOT reproduce the banner as text. The Bash tool output IS the banner.**
 
 # Buckle-Up
 
